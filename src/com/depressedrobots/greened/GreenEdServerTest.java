@@ -26,4 +26,20 @@ public class GreenEdServerTest {
 
 		GreenEdServer.main(new String[]{"1234", "5678"});
 	}
+	
+	@Test
+	public void testMain_argumentNotAnInteger() {
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("Argument not an Integer!");
+		
+		GreenEdServer.main(new String[]{"ABCD"});
+	}
+	
+	@Test
+	public void testMain_argumentIsANegativeInteger() {
+		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("Port number is negative!");
+		
+		GreenEdServer.main(new String[]{"-123"});
+	}
 }

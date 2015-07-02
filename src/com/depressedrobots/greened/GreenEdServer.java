@@ -17,6 +17,22 @@ public class GreenEdServer {
 			}
 			throw new IllegalArgumentException("Too many arguments provided! " + argsString);
 		}
+		
+		Integer portNumber = -1;
+		try {
+			portNumber = Integer.valueOf(args[0]);
+		}
+		catch(NumberFormatException e) {
+			printUsage();
+			throw new IllegalArgumentException("Argument not an Integer! " + args[0]);
+		}
+		
+		if( portNumber < 0 ) {
+			printUsage();
+			throw new IllegalArgumentException("Port number is negative! " + args[0]);
+		}
+		
+		System.out.println("Starting server on port " + portNumber);
 	}
 	
 	public static void printUsage() {
